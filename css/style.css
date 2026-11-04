@@ -197,3 +197,11 @@ a.gl{color:inherit;text-decoration:underline dotted;text-decoration-color:var(--
 .flinks{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px;margin-bottom:8px}.flinks a{color:inherit;font-size:.9rem}
 .support-box{text-align:center;padding:28px}
 .qdlg .btn,.qdlg button{font-family:inherit}
+/* ===== upgrades2: guides, offline, install ===== */
+.bookact{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 18px}
+.bookact .btn{margin:0}
+.bookact .btn.saved{opacity:.75;cursor:default}
+.linkbtn{background:none;border:0;padding:0;font:inherit;font-size:.9rem;color:inherit;cursor:pointer;text-decoration:underline}
+.grid.guides .card h3 a{text-decoration:none;color:inherit}
+.grid.guides .card .btn{margin:4px 6px 0 0}
+#offline .btn[hidden],[data-install][hidden]{display:none}

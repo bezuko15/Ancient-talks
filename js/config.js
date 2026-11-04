@@ -35,3 +35,17 @@ const KIT_FORM_ID = "";
    CONTACT_EMAIL: e.g. "hello@yourdomain.com". While empty no email link is shown. */
 const SUPPORT_URL = "";
 const CONTACT_EMAIL = "Ancienttalksoffical@gmail.com";
+
+/* ===== SEARCH ENGINES =====
+   Verification codes from Google Search Console / Bing Webmaster Tools (the "content" value
+   of their HTML-tag method). NOTE: search engines read these only from static HTML, so ALSO paste
+   them into the marked "SEARCH ENGINE VERIFICATION" comment in the <head> of index.html.
+   (Easiest for Google: verify the Domain with a DNS TXT record at Porkbun instead.) */
+const GOOGLE_SITE_VERIFICATION = "";
+const BING_SITE_VERIFICATION = "";
+
+/* ===== VISITOR STATS (GoatCounter: free, no cookies, no banner needed) =====
+   Sign up at https://www.goatcounter.com/signup and pick a code, e.g. "ancienttalks"
+   (your dashboard is then https://ancienttalks.goatcounter.com). Paste just the code here.
+   While empty, no stats script is loaded. */
+const GOATCOUNTER_CODE = "";
