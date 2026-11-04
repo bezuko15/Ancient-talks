@@ -54,3 +54,12 @@ footer [data-install]{display:none!important}
 html.at-standalone .at-hero-install,html.at-standalone .at-nav-get,html.at-standalone [data-at-get]{display:none!important}
 @media(prefers-reduced-motion:reduce){.at-hero-install{animation:none}}
 body:has(#menuToggle[aria-expanded=true]) .at-install{opacity:0;pointer-events:none}
+
+/* desktop help sheet: centred card instead of bottom sheet */
+@media(min-width:700px){.at-sheet.at-sheet-desk{top:50%;bottom:auto;left:50%;right:auto;width:min(520px,calc(100% - 40px));margin:0;border:1px solid var(--line);border-radius:10px;padding:22px 26px 24px;transform:translate(-50%,-46%);opacity:0;transition:transform .28s cubic-bezier(.2,.8,.2,1),opacity .28s ease}
+.at-sheet.at-sheet-desk.show{transform:translate(-50%,-50%);opacity:1}.at-sheet.at-sheet-desk .grab{display:none}}
+.at-sheet-desk li{align-items:flex-start;line-height:1.4}
+.at-sheet-desk li:before{display:none}
+.hero .btn{vertical-align:middle}
+.at-short{display:none}
+@media(min-width:981px){.at-nav-get{display:none!important}}
