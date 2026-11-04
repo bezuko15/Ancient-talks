@@ -34,4 +34,4 @@ const KIT_FORM_ID = "";
    Support page shows "Donations coming soon" and no button.
    CONTACT_EMAIL: e.g. "hello@yourdomain.com". While empty no email link is shown. */
 const SUPPORT_URL = "";
-const CONTACT_EMAIL = "";
+const CONTACT_EMAIL = "Ancienttalksoffical@gmail.com";
