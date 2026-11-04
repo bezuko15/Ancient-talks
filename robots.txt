@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bezuko15.github.io/Ancient-talks/sitemap.xml
+Sitemap: https://ancienttalks.com/sitemap.xml
