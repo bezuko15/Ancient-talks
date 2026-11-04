@@ -1,11 +1,11 @@
 /* Ancient Talk service worker. Generated from tools/sw_template.js by tools/upgrades2.py.
    Bump SW_VERSION in tools/upgrades2.py whenever core files change. */
-const VERSION = "v5-20261104";
+const VERSION = "v6-20261104";
 const CORE_CACHE = "at-core-" + VERSION;
 const PAGE_CACHE = "at-pages";      // pages/files visited (stale-while-revalidate)
 const BOOK_CACHE = "at-books";      // books saved with "Save this book for offline"
 const FONT_CACHE = "at-fonts";
-const CORE = ["./", "index.html", "library.html", "authors.html", "about.html", "start.html", "daily.html", "shorts.html", "timeline.html", "topics.html", "glossary.html", "support.html", "watch.html", "guides.html", "offline.html", "404.html", "manifest.webmanifest", "css/style.css", "js/books.js", "js/config.js", "js/daily-data.js", "js/daily.js", "js/extras.js", "js/feasts.js", "js/glossary-data.js", "js/main.js", "js/plans-data.js", "js/prayers.js", "js/reader.js", "js/shorts.js", "js/site.js", "js/upgrades.js", "js/upgrades3.js", "img/emblem.png", "img/favicon.png", "img/apple-touch-icon.png", "img/icon-192.png", "img/icon-512.png", "my-library.html", "plans.html", "search.html", "css/upgrades3.css", "search/docs.json", "fonts/atkinson-Regular.woff2", "fonts/atkinson-Bold.woff2", "prayers.html", "css/upgrades4.css"];
+const CORE = ["./", "index.html", "library.html", "authors.html", "about.html", "start.html", "daily.html", "shorts.html", "timeline.html", "topics.html", "glossary.html", "support.html", "watch.html", "guides.html", "offline.html", "404.html", "manifest.webmanifest", "css/style.css", "js/books.js", "js/config.js", "js/daily-data.js", "js/daily.js", "js/extras.js", "js/feasts.js", "js/glossary-data.js", "js/main.js", "js/plans-data.js", "js/prayers.js", "js/reader.js", "js/shorts.js", "js/site.js", "js/upgrades.js", "js/upgrades3.js", "img/emblem.png", "img/favicon.png", "img/apple-touch-icon.png", "img/icon-192.png", "img/icon-512.png", "my-library.html", "plans.html", "search.html", "css/upgrades3.css", "search/docs.json", "fonts/atkinson-Regular.woff2", "fonts/atkinson-Bold.woff2", "prayers.html", "css/upgrades4.css", "css/pwa.css", "js/pwa.js", "img/icon-maskable-512.png"];
 const FONT_CSS = ["https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@400;600&display=swap",
   "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=EB+Garamond:ital@0;1&family=Source+Sans+3:wght@400;600&display=swap"];
 const OFFLINE = new URL("offline.html", self.registration.scope).href;
@@ -41,5 +41,5 @@ self.addEventListener("fetch", e => {
   const url = new URL(req.url);
   if (url.hostname === "fonts.googleapis.com" || url.hostname === "fonts.gstatic.com") { e.respondWith(swr(req, FONT_CACHE, e)); return; }
   if (url.origin !== self.location.origin) return;           // analytics, YouTube etc. go straight to network
-  e.respondWith(swr(req, PAGE_CACHE, e));
+  e.respondWith(swr(req, url.pathname.indexOf("/books/") > -1 ? BOOK_CACHE : PAGE_CACHE, e));
 });

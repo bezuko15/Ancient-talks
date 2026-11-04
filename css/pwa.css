@@ -1,0 +1,56 @@
+/* Ancient Talk PWA polish: safe areas, install banner, iOS guide sheet, standalone back bar. */
+@supports(padding:env(safe-area-inset-top)){
+ header.site{padding-top:env(safe-area-inset-top)}
+ header.site .wrap,main,footer .wrap{padding-left:max(20px,env(safe-area-inset-left));padding-right:max(20px,env(safe-area-inset-right))}
+ footer{padding-bottom:calc(24px + env(safe-area-inset-bottom))}
+}
+.at-ico{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.at-install{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:900;max-width:460px;margin:0 auto;
+ display:flex;align-items:center;gap:12px;padding:12px 12px 12px 14px;background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:6px;
+ box-shadow:0 10px 30px rgba(30,20,10,.14),0 1px 3px rgba(30,20,10,.08);transform:translateY(16px);opacity:0;transition:transform .32s cubic-bezier(.2,.8,.2,1),opacity .32s ease}
+.at-install.show{transform:none;opacity:1}
+.at-install img{width:44px;height:44px;border-radius:10px;border:1px solid var(--line);flex:none}
+.at-install .t{flex:1;min-width:0;line-height:1.25}
+.at-install .t b{display:block;font-family:"Cormorant Garamond",serif;font-size:1.2rem;font-weight:700}
+.at-install .t span{font-size:.88rem;color:var(--muted)}
+.at-install .btn{margin:0;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.at-x{background:none;border:0;color:var(--muted);width:36px;height:36px;border-radius:4px;display:grid;place-items:center;cursor:pointer;flex:none}
+.at-x:hover,.at-x:focus-visible{color:var(--ink);background:var(--bg)}
+.at-sheet-bg{position:fixed;inset:0;z-index:950;background:rgba(20,14,8,.38);opacity:0;transition:opacity .25s ease}
+.at-sheet-bg.show{opacity:1}
+.at-sheet{position:fixed;left:0;right:0;bottom:0;z-index:960;max-width:520px;margin:0 auto;background:var(--paper);color:var(--ink);border:1px solid var(--line);border-bottom:0;
+ border-radius:12px 12px 0 0;padding:10px 22px calc(22px + env(safe-area-inset-bottom));transform:translateY(100%);transition:transform .34s cubic-bezier(.2,.8,.2,1);box-shadow:0 -10px 30px rgba(30,20,10,.16)}
+.at-sheet.show{transform:none}
+.at-sheet .grab{width:38px;height:4px;border-radius:999px;background:var(--line);margin:0 auto 14px}
+.at-sheet h2{font-size:1.5rem;margin:0 0 4px}
+.at-sheet p{color:var(--muted);margin:0 0 14px}
+.at-sheet ol{list-style:none;margin:0 0 18px;padding:0;counter-reset:s}
+.at-sheet li{display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--line);counter-increment:s}
+.at-sheet li:before{content:counter(s);width:26px;height:26px;border-radius:999px;background:var(--accent);color:#fff;font-weight:600;font-size:.85rem;display:grid;place-items:center;flex:none}
+.at-sheet li .at-ico{color:var(--accent);width:1.4em;height:1.4em}
+.at-sheet .btn{width:100%;margin:0;text-align:center;box-sizing:border-box}
+.at-backbar{display:none}
+html.at-standalone .at-backbar{display:flex;align-items:center;gap:4px;position:fixed;left:max(10px,env(safe-area-inset-left));bottom:calc(14px + env(safe-area-inset-bottom));z-index:800;
+ padding:8px 14px 8px 10px;background:var(--paper);color:var(--accent);border:1px solid var(--line);border-radius:999px;font:inherit;font-weight:600;box-shadow:0 4px 14px rgba(30,20,10,.12);cursor:pointer}
+html.at-standalone body{padding-bottom:env(safe-area-inset-bottom)}
+[data-theme=dark] .at-install,[data-theme=dark] .at-sheet,[data-theme=dark] .at-backbar{box-shadow:0 10px 30px rgba(0,0,0,.5)}
+[data-theme=dark] .at-sheet li:before{color:#1d1814}
+@media(prefers-reduced-motion:reduce){.at-install,.at-sheet,.at-sheet-bg{transition:none}}
+@media print{.at-install,.at-sheet,.at-sheet-bg,.at-backbar{display:none!important}}
+.at-install button,.at-sheet button,.at-backbar{font-family:inherit;font-size:inherit}
+.at-install .btn{font-size:.95rem;padding:8px 14px}
+@media(max-width:400px){.at-install{flex-wrap:wrap;gap:10px 12px}.at-install .t{flex:1 1 0}.at-install .at-go{order:3;flex:1 0 100%;justify-content:center;padding:11px 14px}}
+
+/* hero / nav / footer install entry points (hidden by JS unless install is possible) */
+.at-hero-install{display:inline-flex;align-items:center;justify-content:center;gap:9px;font:inherit;font-weight:600;font-size:1rem;line-height:inherit;cursor:pointer;animation:at-in .4s ease both}
+.at-hero-install[hidden],.at-nav-get[hidden],[data-at-get][hidden]{display:none!important}
+.at-hero-install .at-ico{width:1.25em;height:1.25em}
+@media(max-width:560px){.hero:has(.at-hero-install:not([hidden])) .btn{display:flex;justify-content:center;width:100%;max-width:340px;margin:10px auto;box-sizing:border-box}}
+@keyframes at-in{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.at-nav-get a,.at-foot-get{display:inline-flex;align-items:center;gap:6px}
+.at-nav-get a{color:var(--accent)!important;font-weight:600}
+.at-foot-get{font-weight:600}
+footer [data-install]{display:none!important}
+html.at-standalone .at-hero-install,html.at-standalone .at-nav-get,html.at-standalone [data-at-get]{display:none!important}
+@media(prefers-reduced-motion:reduce){.at-hero-install{animation:none}}
+body:has(#menuToggle[aria-expanded=true]) .at-install{opacity:0;pointer-events:none}

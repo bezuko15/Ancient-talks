@@ -114,7 +114,7 @@ const BOOKS=[
 "title": "Confessions",
 "author": "St Augustine of Hippo",
 "era": "Nicene Era",
-"desc": "“Our heart is restless until it rests in You.” The first great spiritual autobiography.",
+"desc": "“Our heart is restless, until it repose in Thee.” The first great spiritual autobiography.",
 "url": "https://www.gutenberg.org/ebooks/3296",
 "src": "Project Gutenberg",
 "read": "books/augustine-confessions.html",
