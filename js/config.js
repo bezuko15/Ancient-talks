@@ -11,3 +11,9 @@ const VIDEOS = [
   { id: "", title: "The Sayings of the Desert Fathers" },
   { id: "", title: "Thomas à Kempis — The Imitation of Christ" }
 ];
+
+/* ===== NEWSLETTER (Kit, free up to 10,000 subscribers) =====
+   Paste the numeric Form ID from your Kit form's HTML embed code, e.g. "1234567"
+   (from <form action="https://app.kit.com/forms/1234567/subscriptions" ...>).
+   While empty, the site shows "Newsletter coming soon" and no form is shown. */
+const KIT_FORM_ID = "";
