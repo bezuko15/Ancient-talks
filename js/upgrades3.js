@@ -111,14 +111,21 @@ function applyAll(){if(!art)return;var all=HL(),full=art.textContent,mine=Object
 var bar,pop,pending=null;
 function place(box,rect){box.hidden=false;var w=box.offsetWidth,hgt=box.offsetHeight,x=rect.left+window.scrollX+rect.width/2-w/2;x=Math.max(8+window.scrollX,Math.min(x,window.scrollX+D.documentElement.clientWidth-w-8));
  var y=rect.top+window.scrollY-hgt-10;if(rect.top<hgt+80)y=rect.bottom+window.scrollY+10;box.style.left=x+'px';box.style.top=y+'px'}
-function selInArt(){var s=window.getSelection();if(!s||s.isCollapsed||!s.rangeCount)return null;var r=s.getRangeAt(0);if(!art.contains(r.commonAncestorContainer))return null;var t=r.toString();if(t.trim().length<2)return null;return r}
+function liveSel(){var s=window.getSelection();if(!s||s.isCollapsed||!s.rangeCount)return null;var r=s.getRangeAt(0);if(!art.contains(r.commonAncestorContainer))return null;var t=r.toString();if(t.trim().length<2)return null;return r}
+var lastRange=null,lastTs=0,barTouch=0;
+var TOUCH=(window.matchMedia&&matchMedia('(pointer:coarse)').matches)||('ontouchstart' in window)||navigator.maxTouchPoints>0;
+function selInArt(){var r=liveSel();if(r){lastRange=r.cloneRange();lastTs=Date.now();return r}
+ // iOS often collapses the selection when a button is tapped: fall back to the last good selection
+ if(lastRange&&Date.now()-lastTs<60000&&lastRange.toString().trim().length>1)return lastRange;return null}
 function hideBar(){if(bar){bar.hidden=true;D.body.classList.remove('at-hlbar')}}
+function showBar(r){D.body.classList.add('at-hlbar');if(TOUCH){bar.classList.add('dock');bar.hidden=false;bar.style.left='';bar.style.top=''}else place(bar,r.getBoundingClientRect())}
 function buildBar(){bar=el('div','hlbar');bar.setAttribute('role','toolbar');bar.setAttribute('aria-label','Highlight selected text');bar.hidden=true;
  bar.innerHTML=COLORS.map(function(c){return '<button type="button" data-c="'+c+'" aria-label="Highlight '+CNAME[c]+'" title="Highlight '+CNAME[c]+'"><span class="sw '+c+'"></span></button>'}).join('')+'<button type="button" data-note>✎ Add note</button>'+(D.querySelector('.qsel')?'<button type="button" data-share>❝ Share</button>':'');
- D.body.appendChild(bar);bar.addEventListener('mousedown',function(e){e.preventDefault()});
- bar.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
+ D.body.appendChild(bar);
+ ['mousedown','pointerdown','touchstart'].forEach(function(ev){bar.addEventListener(ev,function(e){barTouch=Date.now();if(ev!=='touchstart')e.preventDefault()},{passive:ev!=='touchstart'?false:true})});
+ bar.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;e.preventDefault();
   if(b.hasAttribute('data-share')){var q=D.querySelector('.qsel');hideBar();if(q)q.click();return}
-  var h=create(b.dataset.c||'gold');if(!h)return;hideBar();window.getSelection().removeAllRanges();if(b.hasAttribute('data-note'))openPop(h.id,true);else toast('Highlighted · see all in My Library')})}
+  var h=create(b.dataset.c||'gold');if(!h){toast('Select some text in the book first');return}lastRange=null;hideBar();window.getSelection().removeAllRanges();if(b.hasAttribute('data-note'))openPop(h.id,true);else toast('Highlighted · see all in My Library')})}
 function create(color){var r=selInArt();if(!r)return null;var full=art.textContent,raw=r.toString(),s=offsetOf(r.startContainer,r.startOffset),e=s+raw.length;
  while(s<e&&/\s/.test(full[s]))s++;while(e>s&&/\s/.test(full[e-1]))e--;var text=full.slice(s,e);if(!text)return null;
  var h={id:uid(),book:BOOK,title:BOOKTITLE,part:($('h1.part')||{}).textContent||'',page:PAGE,chap:chapAt(r.startContainer),text:text,prefix:full.slice(Math.max(0,s-40),s),suffix:full.slice(e,e+40),start:s,color:color,note:'',ts:Date.now()};
@@ -126,14 +133,21 @@ function create(color){var r=selInArt();if(!r)return null;var full=art.textConte
 function openPop(id,focusNote){var all=HL(),h=all[id];if(!h)return;if(!pop){pop=el('div','hlpop');pop.setAttribute('role','dialog');pop.setAttribute('aria-label','Edit highlight');D.body.appendChild(pop);
   D.addEventListener('keydown',function(e){if(e.key==='Escape'&&pop&&!pop.hidden){pop.hidden=true;var m=$('mark[data-hl="'+pop.dataset.id+'"]');if(m)m.focus()}})}
  pop.dataset.id=id;pop.innerHTML='<p class="q">“'+esc(h.text.length>180?h.text.slice(0,180)+'…':h.text)+'”</p><div class="r" role="group" aria-label="Colour">'+COLORS.map(function(c){return '<button type="button" data-c="'+c+'" aria-pressed="'+(h.color===c)+'" aria-label="'+CNAME[c]+'"><span class="sw '+c+'"></span></button>'}).join('')+'</div><label class="small-note" for="hlNote">Note</label><textarea id="hlNote" placeholder="Write a private note…">'+esc(h.note||'')+'</textarea><div class="r"><button type="button" data-del>🗑 Delete</button><span><button type="button" data-cancel>Close</button> <button type="button" data-save class="btn primary small">Save</button></span></div>';
- var m=$('mark[data-hl="'+id+'"]');place(pop,(m||art).getBoundingClientRect());
+ var m=$('mark[data-hl="'+id+'"]');if(TOUCH){pop.classList.add('dock');pop.hidden=false;pop.style.left='';pop.style.top=''}else place(pop,(m||art).getBoundingClientRect());
  $$('[data-c]',pop).forEach(function(b){b.onclick=function(){var all=HL();all[id].color=b.dataset.c;saveHL(all);$$('mark[data-hl="'+id+'"]').forEach(function(x){x.dataset.c=b.dataset.c});$$('[data-c]',pop).forEach(function(o){o.setAttribute('aria-pressed',o===b)})}});
  $('[data-save]',pop).onclick=function(){var all=HL();if(all[id]){all[id].note=$('textarea',pop).value.trim();all[id].ts=Date.now();saveHL(all);$$('mark[data-hl="'+id+'"]').forEach(function(x){x.classList.toggle('has-note',!!all[id].note)})}pop.hidden=true;toast('Saved')};
  $('[data-cancel]',pop).onclick=function(){pop.hidden=true};
  $('[data-del]',pop).onclick=function(){var all=HL();delete all[id];saveHL(all);unwrap(id);pop.hidden=true;toast('Highlight deleted')};
  if(focusNote)$('textarea',pop).focus();else $('[data-save]',pop).focus()}
 if(art&&BOOK){buildBar();applyAll();
- var st;D.addEventListener('selectionchange',function(){clearTimeout(st);st=setTimeout(function(){var r=selInArt();if(!r){hideBar();return}D.body.classList.add('at-hlbar');place(bar,r.getBoundingClientRect())},200)});
+ var st;function check(){clearTimeout(st);st=setTimeout(function(){var r=liveSel();if(r){lastRange=r.cloneRange();lastTs=Date.now();showBar(r);return}
+  if(Date.now()-barTouch<800)return; // the tap on our own toolbar collapsed the selection: keep the bar
+  hideBar()},250)}
+ D.addEventListener('selectionchange',check);art.addEventListener('mouseup',check);art.addEventListener('touchend',check);art.addEventListener('keyup',check);
+ // fallback: a Highlight button in the reader bar
+ var g0=$('.rtools .grp');if(g0){var hb=el('button',null,'🖍 Highlight');hb.type='button';hb.id='hlBtn';hb.title='Highlight the selected text';g0.insertBefore(hb,g0.firstChild);
+  ['mousedown','pointerdown'].forEach(function(ev){hb.addEventListener(ev,function(e){barTouch=Date.now();e.preventDefault()})});
+  hb.addEventListener('click',function(e){e.preventDefault();var h=create('gold');if(!h){toast('Select a sentence in the book first, then tap Highlight');return}lastRange=null;hideBar();window.getSelection().removeAllRanges();toast('Highlighted · tap it to add a note')})}
  art.addEventListener('click',function(e){var m=e.target.closest('mark.at-hl');if(m&&window.getSelection().isCollapsed)openPop(m.dataset.hl)});
  art.addEventListener('keydown',function(e){var m=e.target.closest&&e.target.closest('mark.at-hl');if(m&&(e.key==='Enter'||e.key===' ')){e.preventDefault();openPop(m.dataset.hl)}});
  D.addEventListener('mousedown',function(e){if(pop&&!pop.hidden&&!pop.contains(e.target)&&!e.target.closest('mark.at-hl'))pop.hidden=true})}
