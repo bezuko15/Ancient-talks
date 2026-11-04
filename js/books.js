@@ -91,6 +91,16 @@ const BOOKS=[
 "epub": "books/files/gregory-on-the-making-of-man.epub"
 },
 {
+"title": "The Five Theological Orations",
+"author": "St Gregory the Theologian",
+"era": "Nicene Era",
+"desc": "The orations that earned Gregory of Nazianzus the title “the Theologian”: on God, the Son and the Holy Spirit.",
+"url": "https://ccel.org/ccel/schaff/npnf207.iii.xii.html",
+"src": "CCEL",
+"read": "books/gregory-nazianzen-theological-orations.html",
+"epub": "books/files/gregory-nazianzen-theological-orations.epub"
+},
+{
 "title": "On the Priesthood",
 "author": "St John Chrysostom",
 "era": "Nicene Era",
@@ -139,12 +149,30 @@ const BOOKS=[
 "src": "Internet Archive"
 },
 {
+"title": "Hymns on the Nativity and The Pearl",
+"author": "St Ephrem the Syrian",
+"era": "Syriac Fathers",
+"desc": "St Ephrem's nineteen Hymns on the Nativity and his seven hymns on the faith, The Pearl.",
+"url": "https://ccel.org/ccel/schaff/npnf213.iii.html",
+"src": "CCEL",
+"read": "books/ephrem-hymns.html",
+"epub": "books/files/ephrem-hymns.epub"
+},
+{
 "title": "Mystic Treatises",
 "author": "St Isaac the Syrian",
 "era": "Syriac Fathers",
 "desc": "The ascetical homilies of Isaac of Nineveh, trans. A.J. Wensinck (1923).",
 "url": "https://archive.org/details/IsaacOfNinevehMysticTreatises",
 "src": "Internet Archive"
+},
+{
+"title": "Ascetic and theological writings (Greek & Latin, Migne PG 90)",
+"author": "St Maximus the Confessor",
+"era": "Byzantine",
+"desc": "No public-domain English translation exists, so we link to the original Greek text with Latin translation (Patrologia Graeca vol. 90, 1865), free on Wikimedia Commons.",
+"url": "https://commons.wikimedia.org/wiki/File:Patrologia_Graeca_Vol._090.pdf",
+"src": "Wikimedia Commons"
 },
 {
 "title": "An Exact Exposition of the Orthodox Faith",
@@ -215,5 +243,13 @@ const BOOKS=[
 "src": "Project Gutenberg",
 "read": "books/chesterton-man-who-was-thursday.html",
 "epub": "books/files/chesterton-man-who-was-thursday.epub"
+},
+{
+"title": "The Philokalia (Greek, Venice 1782)",
+"author": "The Philokalia",
+"era": "Byzantine",
+"desc": "The anthology of the neptic Fathers on watchfulness and prayer. English translations are still in copyright, so we link to the first Greek edition (1782), free on Wikimedia Commons.",
+"url": "https://commons.wikimedia.org/wiki/File:%CE%A6%CE%99%CE%9B%CE%9F%CE%9A%CE%91%CE%9B%CE%99%CE%91_%CE%A4%CE%A9%CE%9D_%CE%99%CE%95%CE%A1%CE%A9%CE%9D_%CE%9D%CE%97%CE%A0%CE%A4%CE%99%CE%9A%CE%A9%CE%9D.pdf",
+"src": "Wikimedia Commons"
 }
 ];

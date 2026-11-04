@@ -25,3 +25,14 @@ var FEASTS=[
  {m:12,d:20,name:"St Ignatius of Antioch",trad:"Eastern Orthodox",author:"ignatius"}
 ];
 var FEAST_LINKS={basil:"books/basil-on-the-holy-spirit.html",gregory:"books/gregory-on-the-making-of-man.html",desert:"authors.html#the-desert-fathers",athanasius:"books/athanasius-on-the-incarnation.html",isaac:"shorts.html#ladder-within",chrysostom:"books/chrysostom-on-the-priesthood.html",cyril:"books/cyril-catechetical-lectures.html",justin:"books/justin-first-apology.html",augustine:"books/augustine-confessions.html",irenaeus:"books/irenaeus-against-heresies.html",ignatius:"books/ignatius-ephesians.html",clement:"books/1-clement.html",damascus:"books/john-of-damascus-exact-exposition.html"};
+
+// u4: added Nov 2026
+FEASTS.push(
+ {m:1,d:21,name:"St Maximus the Confessor",trad:"Eastern Orthodox",author:"maximus"},
+ {m:1,d:25,name:"St Gregory the Theologian",trad:"Eastern Orthodox",author:"gregnaz"},
+ {m:1,d:28,name:"St Ephrem the Syrian",trad:"Eastern Orthodox",author:"ephrem"},
+ {m:6,d:9,name:"St Ephrem the Syrian",trad:"Roman Catholic",author:"ephrem"},
+ {m:8,d:13,name:"St Maximus the Confessor",trad:"Roman Martyrology",author:"maximus"});
+FEASTS.sort(function(a,b){return a.m-b.m||a.d-b.d});
+FEAST_LINKS.maximus="authors.html#st-maximus-the-confessor";FEAST_LINKS.gregnaz="books/gregory-nazianzen-theological-orations.html";FEAST_LINKS.ephrem="books/ephrem-hymns.html";
+// /u4
