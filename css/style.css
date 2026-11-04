@@ -72,3 +72,24 @@ body.serif .text{font-family:'EB Garamond',Georgia,serif;font-size:1.22rem}
 .tag-out{font-size:.8rem;color:var(--muted)}
 .toc a,.pn a{text-transform:none;letter-spacing:0;font-weight:400;font-size:inherit;border:0}
 .toc a:hover,.pn a:hover{border:0}.toc li.t1>a{font-weight:600}.pn a{font-weight:600}
+/* ---- shorts ---- */
+.sfilter{display:inline-flex;border:1px solid #c9b994;border-radius:6px;overflow:hidden;margin:8px 0 32px}
+.sfilter button{font:inherit;font-weight:600;padding:9px 18px;border:0;background:var(--paper);color:var(--ink);cursor:pointer;border-right:1px solid #c9b994}
+.sfilter button:last-child{border-right:0}.sfilter button[aria-pressed=true]{background:var(--accent);color:#fff}
+.shorts{display:grid;gap:28px;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));align-items:start}
+.short[hidden]{display:none}.short{padding:28px}
+.shead{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.badge{font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;padding:4px 10px;border-radius:999px}
+.badge.b1{background:#efe3cc;color:#5a4020}.badge.b5{background:var(--accent);color:#fff}
+.wc{font-size:.85rem;color:var(--muted)}
+.stitle{font-size:1.75rem;margin:14px 0 2px}.short .by{font-weight:600;color:var(--ink);margin:0 0 14px}
+.stext{margin:0;padding:0 0 0 16px;border-left:3px solid var(--accent);font-family:'EB Garamond',Georgia,serif;font-size:1.15rem;line-height:1.65;color:#2f2823;position:relative}
+.stext p{margin:0 0 .8em;color:#2f2823}.stext .ell{text-align:center;color:var(--muted)}
+.stext[data-collapsed=true]{max-height:15em;overflow:hidden}
+.stext[data-collapsed=true]::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4.5em;background:linear-gradient(rgba(251,247,238,0),var(--paper))}
+.toggle{margin-top:12px}
+.scite{margin-top:18px;border-top:1px solid var(--line);padding-top:12px;font-size:.88rem;color:var(--muted)}.scite p{margin:.3em 0;color:var(--muted)}
+.sact{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.sact a{font-weight:600}
+.copy{font:inherit;font-size:.85rem;background:none;border:1px solid #c9b994;border-radius:4px;padding:4px 10px;cursor:pointer;color:var(--ink)}
+@media(max-width:640px){.shorts{grid-template-columns:1fr}.short{padding:20px}.stitle{font-size:1.5rem}}
+@media(max-width:640px){nav ul{gap:10px 12px}nav a{font-size:.74rem;letter-spacing:.03em}}
