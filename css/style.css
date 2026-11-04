@@ -165,3 +165,35 @@ nav ul{gap:18px}
 @media(max-width:640px){.tl::before{left:8px}.tl li{grid-template-columns:1fr;gap:4px;padding-left:28px}.tl .when{text-align:left;padding:0}.tl .card::before{left:-27px;top:-22px}.tl .era-h{margin-left:0}}
 .start-picks{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
 [hidden]{display:none!important}
+/* ===== v5: listen along, quote cards, glossary, topics, support ===== */
+.listen{margin:18px 0 22px;padding:14px 16px;border:1px solid var(--line,#e4d6bc);border-radius:8px;background:var(--paper,#fffaf1)}
+.listen .lbtn{font:inherit;font-weight:600;cursor:pointer;background:var(--accent,#7a1f2b);color:#fff;border:0;border-radius:999px;padding:10px 18px}
+.listen small{display:block;margin-top:8px;opacity:.75;font-size:.82rem}
+.listen .video{margin:0}
+.listen-soon{font-size:.88rem;opacity:.8;margin:12px 0 18px}
+.listen-soon a{color:var(--accent,#7a1f2b)}
+.qbtn{font:inherit;font-size:.82rem;cursor:pointer;background:none;border:1px solid var(--line,#d9c7a6);color:var(--accent,#7a1f2b);border-radius:999px;padding:5px 12px;margin:10px 8px 0 0}
+.qsel{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:60;font:inherit;font-weight:600;cursor:pointer;background:var(--accent,#7a1f2b);color:#fff;border:0;border-radius:999px;padding:12px 20px;box-shadow:0 6px 24px rgba(0,0,0,.25)}
+[data-theme=dark] .qsel,[data-theme=dark] .listen .lbtn{color:#1d1814}
+.qdlg{border:0;border-radius:12px;padding:18px;width:min(560px,94vw);max-height:94vh;overflow:auto;background:var(--paper,#fffaf1);color:var(--ink,#2b211a);box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.qdlg::backdrop{background:rgba(20,14,10,.55)}
+.qhead{display:flex;justify-content:space-between;align-items:center}.qhead h2{margin:0;font-size:1.5rem}
+.qfmt{display:flex;gap:8px;margin:12px 0;flex-wrap:wrap}.qfmt button{font:inherit;font-size:.85rem;cursor:pointer;border:1px solid var(--line,#d9c7a6);background:transparent;color:inherit;border-radius:999px;padding:6px 12px}
+.qfmt button[aria-pressed=true]{background:var(--accent,#7a1f2b);color:#fff;border-color:transparent}
+.qcv{width:100%;height:auto;border-radius:6px;display:block;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+.qwarn{font-size:.85rem;color:#8a4b00;margin:10px 0 0}.qact{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.qmsg{font-size:.85rem;margin:8px 0 0;word-break:break-all}
+a.gl{color:inherit;text-decoration:underline dotted;text-decoration-color:var(--accent,#7a1f2b);text-underline-offset:3px;cursor:help}
+.gtip{position:absolute;z-index:70;background:var(--paper,#fffaf1);color:var(--ink,#2b211a);border:1px solid var(--line,#d9c7a6);border-radius:8px;padding:10px 12px;font:400 .88rem/1.45 "Source Sans 3",sans-serif;box-shadow:0 8px 28px rgba(0,0,0,.2)}
+.gtip b{color:var(--accent,#7a1f2b)}.gtip .gmore{display:block;margin-top:6px;font-size:.76rem;opacity:.7}
+.passage{margin:0 0 28px;padding:22px 24px;border-left:3px solid var(--accent,#7a1f2b);background:var(--paper,#fffaf1);border-radius:0 8px 8px 0}
+.passage blockquote{margin:0;font-family:"EB Garamond","Cormorant Garamond",Georgia,serif;font-size:1.12rem;line-height:1.65}
+.passage figcaption{margin-top:12px;font-size:.88rem}.passage figcaption .pa{font-weight:600}.passage figcaption a{color:var(--accent,#7a1f2b)}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.topic-grid a.card{text-decoration:none;color:inherit;display:block}.topic-grid h2{margin:.1em 0 .3em;font-size:1.45rem;color:var(--accent,#7a1f2b)}
+.gsearch{width:100%;font:inherit;padding:12px;border:1px solid #c9b994;border-radius:6px;margin:8px 0 6px;background:var(--paper,#fff)}
+[data-theme=dark] .gsearch{background:#2d261f;color:var(--ink);border-color:#4a3f35}
+.glist dt{font-family:"Cormorant Garamond",serif;font-weight:700;font-size:1.35rem;margin-top:22px;color:var(--accent,#7a1f2b);scroll-margin-top:90px}
+.glist dd{margin:4px 0 0}.glist dt:target{background:rgba(122,31,43,.08)}
+.flinks{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px;margin-bottom:8px}.flinks a{color:inherit;font-size:.9rem}
+.support-box{text-align:center;padding:28px}
+.qdlg .btn,.qdlg button{font-family:inherit}
