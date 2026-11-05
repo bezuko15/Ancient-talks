@@ -6,7 +6,7 @@ function apply(f){var n=0;cards.forEach(function(c){var show=f==='all'||(' '+c.d
  if(cnt)cnt.textContent=n+(n===1?' prayer':' prayers')+(f==='all'?'':' for '+f.charAt(0).toUpperCase()+f.slice(1));
  try{history.replaceState(null,'',f==='all'?location.pathname:'#'+f)}catch(e){}}
 btns.forEach(function(b){b.addEventListener('click',function(){apply(b.dataset.f)})});
-var h=(location.hash||'').slice(1);if(['morning','evening','lent','anytime'].indexOf(h)>-1)apply(h);
+var h=(location.hash||'').slice(1);if(['morning','evening','lent','anytime','meals','before-meals','after-meals'].indexOf(h)>-1)apply(h);
 function text(card){return [].map.call(card.querySelectorAll('.prayer-text p'),function(p){return p.innerText.trim()}).join('\n\n')}
 cards.forEach(function(card){
  var c=card.querySelector('.pcopy'),s=card.querySelector('.pshare');
