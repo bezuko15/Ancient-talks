@@ -4,15 +4,28 @@
 .at-chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:16px 0 8px}
 .at-chips a{display:inline-block;padding:10px 16px;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:var(--ink);background:var(--paper);font-weight:600;font-size:.95rem}
 .at-chips a:hover,.at-chips a:focus{border-color:var(--accent);color:var(--accent)}
-.icon-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;margin-top:24px}
-.icon-card{display:flex;flex-direction:column;padding:0;overflow:hidden}
-.icon-card .ic-img{aspect-ratio:3/4;object-fit:cover;width:100%;background:#1d1814;display:block}
-.icon-card .ic-body{padding:14px 16px 16px;flex:1;display:flex;flex-direction:column}
-.icon-card h2{font-size:1.25rem;margin:.1em 0 .35em;color:var(--accent)}
-.icon-card .ic-note{flex:1;font-size:.95rem}
-.icon-card .ic-links{margin-top:8px;font-size:.9rem}
-.icon-card .ic-links a{margin-right:10px}
-.icon-card .ic-act{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px}
+/* Icons: compact tile grid */
+.icons-intro .lead{margin-bottom:.5rem}
+.icons-intro .icons-extra{margin:.4rem 0 0}
+.icons-intro .icons-actions{margin:10px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.icon-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:14px;margin-top:18px}
+.icon-card{margin:0;padding:0;overflow:hidden;border:1px solid var(--line);border-radius:8px;background:var(--paper)}
+.icon-card .ic-tile{display:block;width:100%;padding:0;border:0;background:transparent;color:inherit;cursor:pointer;text-align:center;font:inherit}
+.icon-card .ic-tile:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.icon-card .ic-img{aspect-ratio:1;object-fit:cover;width:100%;height:auto;background:#1d1814;display:block}
+.icon-card .ic-name{display:block;padding:8px 6px 10px;font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1rem;line-height:1.2;color:var(--accent)}
+.icon-card .ic-detail{display:none}
+.ic-sheet[hidden]{display:none!important}
+.ic-sheet{position:fixed;inset:0;z-index:70;display:flex;align-items:flex-end;justify-content:center;background:rgba(20,14,10,.5)}
+.ic-sheet-panel{position:relative;background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:14px 14px 0 0;width:min(560px,100%);max-height:min(88vh,720px);overflow:auto;padding:16px 16px 24px;box-shadow:0 -8px 32px rgba(0,0,0,.28)}
+.ic-sheet-handle{width:40px;height:4px;border-radius:2px;background:var(--line);margin:0 auto 12px}
+.ic-sheet-close{position:absolute;right:12px;top:10px}
+.ic-sheet-top{display:grid;grid-template-columns:96px 1fr;gap:12px;align-items:start}
+.ic-sheet-top img{width:96px;height:96px;object-fit:cover;border-radius:8px;background:#1d1814}
+.ic-sheet-top h2{margin:0 0 4px;font-size:1.35rem;color:var(--accent)}
+.ic-sheet-note{margin:.4em 0;font-size:.95rem}
+.ic-sheet-links{margin:8px 0;font-size:.95rem;display:flex;flex-wrap:wrap;gap:8px 12px}
+.ic-sheet-act{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
 .share-modal[hidden]{display:none!important}
 .share-modal{position:fixed;inset:0;z-index:80;background:rgba(20,14,10,.55);display:flex;align-items:center;justify-content:center;padding:16px}
 .share-dialog{background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:10px;max-width:420px;width:100%;padding:18px;box-shadow:0 12px 40px rgba(0,0,0,.25)}
@@ -33,4 +46,27 @@
 .icon-credits{font-size:.85rem;margin-top:36px}
 .icon-credits li{margin:.35em 0}
 .meal-banner{margin:20px 0;padding:14px 16px;border-radius:8px;background:rgba(122,31,43,.08);border:1px solid var(--line)}
-@media(max-width:640px){#saintsMap{height:340px}.share-dialog{padding:14px}}
+@media(max-width:600px){
+  .icon-grid{grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+  .icon-card{border-radius:6px}
+  .icon-card .ic-name{padding:6px 4px 8px;font-size:.82rem;line-height:1.15}
+  .icons-intro h1{font-size:1.6rem;margin-bottom:.25rem}
+  .icons-intro .lead{font-size:.9rem;margin-bottom:.25rem;line-height:1.35}
+  .icons-intro .icons-extra{display:none}
+  .icons-intro .icons-actions{margin-top:4px;margin-bottom:0}
+  .icons-intro .icons-actions .btn{padding:5px 9px;font-size:.8rem}
+  .icon-credits{margin-top:22px}
+  .ic-sheet-panel{border-radius:16px 16px 0 0;padding:14px 14px calc(18px + env(safe-area-inset-bottom,0px))}
+  .ic-sheet-top{grid-template-columns:72px 1fr;gap:10px}
+  .ic-sheet-top img{width:72px;height:72px}
+  .ic-sheet-top h2{font-size:1.2rem}
+  #saintsMap{height:340px}
+  .share-dialog{padding:14px}
+}
+@media(min-width:601px) and (max-width:900px){
+  .icon-grid{grid-template-columns:repeat(4,1fr);gap:12px}
+}
+@media(min-width:901px){
+  .icon-grid{grid-template-columns:repeat(5,1fr);gap:14px}
+  .icon-card .ic-name{font-size:1.05rem;padding:10px 8px 12px}
+}
