@@ -24,6 +24,7 @@ function openSheet(slug){
   sheetImg.src=cur.img; sheetImg.alt='Icon of '+cur.name;
   sheetName.textContent=cur.name;
   sheetNote.textContent=cur.note||'';
+  var sw=document.getElementById('sheetWho'); if(sw)sw.textContent=cur.who||'';
   sheetLinks.innerHTML='';
   (cur.links||[]).forEach(function(pair){
     var a=document.createElement('a'); a.href=pair[0]; a.textContent=pair[1]; sheetLinks.appendChild(a);
@@ -41,14 +42,14 @@ function closeSheet(){
 function draw(){
   if(!cur||!canvas)return;
   var withQ=chk&&chk.checked&&cur.quote;
-  var W=1080,H=withQ?1350:1080;
+  var W=1080,H=withQ?1400:1120;
   canvas.width=W; canvas.height=H;
   var ctx=canvas.getContext('2d');
   ctx.fillStyle='#f4ecdf'; ctx.fillRect(0,0,W,H);
   ctx.strokeStyle='#7a1f2b'; ctx.lineWidth=18; ctx.strokeRect(18,18,W-36,H-36);
   var img=new Image(); img.crossOrigin='anonymous';
   img.onload=function(){
-    var boxX=90, boxY=90, boxW=W-180, boxH=withQ?620:720;
+    var boxX=90, boxY=90, boxW=W-180, boxH=withQ?600:700;
     var s=Math.min(boxW/img.width, boxH/img.height);
     var dw=img.width*s, dh=img.height*s;
     var dx=boxX+(boxW-dw)/2, dy=boxY+(boxH-dh)/2;
@@ -58,8 +59,9 @@ function draw(){
     ctx.font='700 54px "Cormorant Garamond",serif';
     ctx.textAlign='center';
     var nameY=boxY+boxH+70;
-    wrap(ctx,cur.name,W/2,nameY,W-160,58);
-    var y=nameY+70;
+    var y=wrap(ctx,cur.name,W/2,nameY,W-160,58);
+    if(cur.who){ctx.fillStyle='#5a4a40'; ctx.font='500 30px "Source Sans 3",sans-serif'; y=wrap(ctx,cur.who,W/2,y-8,W-160,38);}
+    y+=30;
     if(withQ){
       ctx.fillStyle='#2a221c';
       ctx.font='italic 36px "Cormorant Garamond",serif';
