@@ -48,4 +48,9 @@ const BING_SITE_VERIFICATION = "";
    Sign up at https://www.goatcounter.com/signup and pick a code, e.g. "ancienttalks"
    (your dashboard is then https://ancienttalks.goatcounter.com). Paste just the code here.
    While empty, no stats script is loaded. */
-const GOATCOUNTER_CODE = "";
+const GOATCOUNTER_CODE = "ancienttalks"; // counts to https://ancienttalks.goatcounter.com/count
+
+/* ===== GOOGLE ANALYTICS (GA4) =====
+   Paste your Measurement ID, e.g. "G-ABC123XYZ" (Google Analytics > Admin > Data streams).
+   While empty, nothing from Google is loaded. */
+const GA_MEASUREMENT_ID = "";

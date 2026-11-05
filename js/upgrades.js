@@ -1,11 +1,14 @@
 /* Ancient Talk: visitor stats, offline app (service worker), install button, save book offline. */
 (function(){
 var ROOT=document.documentElement.getAttribute('data-root')||'';
-var C={GOATCOUNTER_CODE:typeof GOATCOUNTER_CODE!=='undefined'?GOATCOUNTER_CODE:'',GOOGLE_SITE_VERIFICATION:typeof GOOGLE_SITE_VERIFICATION!=='undefined'?GOOGLE_SITE_VERIFICATION:'',BING_SITE_VERIFICATION:typeof BING_SITE_VERIFICATION!=='undefined'?BING_SITE_VERIFICATION:''};
+var C={GA_MEASUREMENT_ID:typeof GA_MEASUREMENT_ID!=='undefined'?GA_MEASUREMENT_ID:'',GOATCOUNTER_CODE:typeof GOATCOUNTER_CODE!=='undefined'?GOATCOUNTER_CODE:'',GOOGLE_SITE_VERIFICATION:typeof GOOGLE_SITE_VERIFICATION!=='undefined'?GOOGLE_SITE_VERIFICATION:'',BING_SITE_VERIFICATION:typeof BING_SITE_VERIFICATION!=='undefined'?BING_SITE_VERIFICATION:''};
 function cfg(n){return C[n]||''}
 // ---- GoatCounter (only when GOATCOUNTER_CODE is set)
 var gc=String(cfg('GOATCOUNTER_CODE')||'').trim();
 if(gc&&/^[a-z0-9-]+$/i.test(gc)&&location.protocol.indexOf('http')===0){var s=document.createElement('script');s.async=true;s.src='https://gc.zgo.at/count.js';s.setAttribute('data-goatcounter','https://'+gc+'.goatcounter.com/count');document.body.appendChild(s)}
+// ---- Google Analytics (only when GA_MEASUREMENT_ID is set)
+var ga=String(cfg('GA_MEASUREMENT_ID')||'').trim();
+if(ga&&/^G-[A-Z0-9]+$/i.test(ga)&&location.protocol.indexOf('http')===0){var g=document.createElement('script');g.async=true;g.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(ga);document.head.appendChild(g);window.dataLayer=window.dataLayer||[];window.gtag=function(){window.dataLayer.push(arguments)};window.gtag('js',new Date());window.gtag('config',ga)}
 // ---- verification meta (static copy in index.html is what search engines use)
 [['google-site-verification','GOOGLE_SITE_VERIFICATION'],['msvalidate.01','BING_SITE_VERIFICATION']].forEach(function(p){var v=cfg(p[1]);if(v&&!document.querySelector('meta[name="'+p[0]+'"]')){var m=document.createElement('meta');m.name=p[0];m.content=v;document.head.appendChild(m)}});
 // ---- service worker
