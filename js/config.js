@@ -33,7 +33,7 @@ const KIT_FORM_ID = "";
    SUPPORT_URL: your donation page, e.g. "https://ko-fi.com/ancienttalk". While empty the
    Support page shows "Donations coming soon" and no button.
    CONTACT_EMAIL: e.g. "hello@yourdomain.com". While empty no email link is shown. */
-const SUPPORT_URL = "";
+const SUPPORT_URL = "https://ko-fi.com/ancienttalks";
 const CONTACT_EMAIL = "Ancienttalksoffical@gmail.com";
 
 /* ===== SEARCH ENGINES =====
