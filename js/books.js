@@ -81,6 +81,16 @@ const BOOKS=[
 "epub": "books/files/basil-on-the-holy-spirit.epub"
 },
 {
+"title": "The Hexaemeron",
+"author": "St Basil the Great",
+"era": "Nicene Era",
+"desc": "St Basil's nine Lenten homilies on the six days of creation in Genesis.",
+"url": "https://ccel.org/ccel/schaff/npnf208.viii.html",
+"src": "CCEL",
+"read": "books/basil-hexaemeron.html",
+"epub": "books/files/basil-hexaemeron.epub"
+},
+{
 "title": "On the Making of Man",
 "author": "St Gregory of Nyssa",
 "era": "Nicene Era",
@@ -109,6 +119,26 @@ const BOOKS=[
 "src": "CCEL",
 "read": "books/chrysostom-on-the-priesthood.html",
 "epub": "books/files/chrysostom-on-the-priesthood.epub"
+},
+{
+"title": "Homilies on the Statues",
+"author": "St John Chrysostom",
+"era": "Nicene Era",
+"desc": "Twenty-one Lenten homilies preached at Antioch in 387, when the city feared the emperor's punishment after the statues were overthrown.",
+"url": "https://ccel.org/ccel/schaff/npnf109.xix.html",
+"src": "CCEL",
+"read": "books/chrysostom-homilies-on-the-statues.html",
+"epub": "books/files/chrysostom-homilies-on-the-statues.epub"
+},
+{
+"title": "No One Can Harm the Man Who Does Not Injure Himself",
+"author": "St John Chrysostom",
+"era": "Nicene Era",
+"desc": "A short treatise written in exile near the end of his life and sent to the deaconess Olympias.",
+"url": "https://ccel.org/ccel/schaff/npnf109.xvi.iii.html",
+"src": "CCEL",
+"read": "books/chrysostom-no-one-can-harm.html",
+"epub": "books/files/chrysostom-no-one-can-harm.epub"
 },
 {
 "title": "Confessions",
