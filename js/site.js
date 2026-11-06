@@ -55,3 +55,37 @@ var nf=document.getElementById('newsletterForm'),ns=document.getElementById('new
 if(nf&&ns){var id=(typeof KIT_FORM_ID!=='undefined'&&String(KIT_FORM_ID).trim())||'';
  if(/^\d+$/.test(id)){nf.action='https://app.kit.com/forms/'+id+'/subscriptions';nf.hidden=false;ns.hidden=true}else{nf.hidden=true;ns.hidden=false}}
 })();
+/* Exact-passage arrival: one gentle highlight, then it fades. */
+(function(){
+var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+var timer,fade,begin;
+function clearMark(){clearTimeout(timer);clearTimeout(fade);document.querySelectorAll('.xq-mark').forEach(function(el){el.classList.remove('xq-mark','xq-off')})}
+function beginLink(){
+ var tools=document.querySelector('.rtools'); if(!tools) return null;
+ var a=tools.querySelector('.xq-begin'); if(a) return a;
+ var nav=document.createElement('div'); nav.className='rnav';
+ var lib=tools.querySelector('a');
+ if(lib){tools.insertBefore(nav,lib);nav.appendChild(lib)} else tools.insertBefore(nav,tools.firstChild);
+ a=document.createElement('a'); a.className='xq-begin'; a.hidden=true; a.textContent='Read from the beginning';
+ nav.appendChild(a); return a;
+}
+function run(){
+ clearMark();
+ var a=begin||(begin=beginLink());
+ if(a) a.hidden=true;
+ var id='';
+ try{id=decodeURIComponent((location.hash||'').slice(1))}catch(e){id=(location.hash||'').slice(1)}
+ if(!id) return;
+ var el=document.getElementById(id);
+ if(!el||!el.hasAttribute('data-xq')) return;
+ var start=el.getAttribute('data-book-start');
+ if(a&&start){a.href=start;a.hidden=false}
+ el.classList.add('xq-mark');
+ var done=function(){el.classList.remove('xq-mark','xq-off')};
+ if(reduce){timer=setTimeout(done,4000);return}
+ timer=setTimeout(function(){el.classList.add('xq-off');fade=setTimeout(done,1400)},4000);
+}
+window.addEventListener('hashchange',run);
+window.addEventListener('pageshow',function(e){if(e.persisted)run()});
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();
+})();
