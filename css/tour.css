@@ -10,7 +10,7 @@
 .at-tour-n{margin:0 0 4px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted,#5e534a)}
 .at-tour-card h2{font-family:var(--serif);font-size:1.9rem;margin:0 0 .35em;outline:none}
 .at-tour-card #atTourB{margin:0 0 10px;font-size:1.02rem;line-height:1.55}
-.at-tour-go{margin:0 0 12px;min-height:1.4em;font-weight:600;font-size:.98rem}
+.at-tour-go{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 16px;margin:0 0 12px;min-height:1.4em;font-weight:600;font-size:.98rem}
 .at-tour-dots{display:flex;gap:7px;justify-content:center;margin:4px 0 16px}
 .at-tour-dots i{width:8px;height:8px;border-radius:50%;background:var(--line,#e2d6bd)}
 .at-tour-dots i.on{background:var(--accent,#7a1f2b);transform:scale(1.2)}

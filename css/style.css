@@ -143,7 +143,7 @@ nav ul{gap:18px}
 .resume{background:var(--paper);border:1px solid var(--accent);border-radius:6px;padding:12px 16px;margin:0 auto 24px;max-width:68ch;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
 .resume button{font:inherit;font-weight:600;background:var(--accent);color:#fff;border:0;border-radius:4px;padding:8px 14px;cursor:pointer}
 /* home widgets */
-.widgets{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.widgets{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))}
 .widget h2{font-size:1.6rem;margin-bottom:.3em}.widget .slabel{font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin:.2em 0 .6em}
 .widget ul{list-style:none;padding:0;margin:0}.widget li{margin:0 0 .7em}.widget li a{font-weight:600}
 .widget .trad{display:block;font-size:.88rem;color:var(--muted)}

@@ -16,8 +16,8 @@ if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostnam
 // ---- install button / hint
 var standalone=window.matchMedia&&matchMedia('(display-mode: standalone)').matches||navigator.standalone;
 var btns=[].slice.call(document.querySelectorAll('[data-install]')),hints=[].slice.call(document.querySelectorAll('[data-install-hint]')),deferred=null;
-if(standalone){btns.concat(hints).forEach(function(b){b.hidden=true})}
-window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();deferred=e;btns.forEach(function(b){b.hidden=false});hints.forEach(function(h){if(h.tagName==='A')h.hidden=true})});
+if(standalone){btns.forEach(function(b){b.hidden=true})}
+window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();deferred=e;btns.forEach(function(b){b.hidden=false})});
 btns.forEach(function(b){b.addEventListener('click',function(){if(!deferred)return;deferred.prompt();deferred.userChoice.finally(function(){deferred=null;btns.forEach(function(x){x.hidden=true})})})});
 window.addEventListener('appinstalled',function(){btns.forEach(function(x){x.hidden=true})});
 // ---- save this book for offline
