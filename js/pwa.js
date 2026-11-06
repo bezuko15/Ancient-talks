@@ -33,7 +33,7 @@ var hero=d.querySelector('.hero .wrap');
 if(hero){heroBtn=d.createElement('button');heroBtn.type='button';heroBtn.className='btn primary at-hero-install';heroBtn.innerHTML=isDesktop?I.pc+'Install the app':I.phone+'Add to Home Screen';
  var yt=hero.querySelector('.btn');(yt&&yt.nextSibling?hero.insertBefore(heroBtn,yt.nextSibling):hero.appendChild(heroBtn));gets.push(heroBtn);
  if('IntersectionObserver' in window)new IntersectionObserver(function(en){heroVisible=en[0].isIntersecting;if(heroVisible)hide();else if(!heroBtn.hidden)offer()}).observe(heroBtn)}
-var ul=d.querySelector('#siteNav ul');if(ul){var li=d.createElement('li');li.className='at-nav-get';li.innerHTML='<a href="#" data-at-get>'+I.phone+'Get the app</a>';var hs=ul.querySelector('.hsearch');ul.insertBefore(li,hs||null);gets.push(li)}
+var hs=d.querySelector('#siteNav .hsearch');var ul=hs?hs.parentNode:d.querySelector('#siteNav ul');if(ul){var li=d.createElement('li');li.className='at-nav-get';li.innerHTML='<a href="#" data-at-get>'+I.phone+'Get the app</a>';ul.insertBefore(li,hs||null);gets.push(li)}
 var fl=d.querySelector('footer .flinks');if(fl){var a=d.createElement('a');a.href='#';a.setAttribute('data-at-get','');a.className='at-foot-get';a.innerHTML=I.phone+'Get the app';fl.insertBefore(a,fl.firstChild);gets.push(a)}
 gets.forEach(function(x){x.hidden=true;(x.matches('li')?x.querySelector('a'):x).addEventListener('click',go)});
 var sub='',lab='';
@@ -56,7 +56,7 @@ function dsheet(){var c='<li>'+I.dl+'<span><b>Chrome or Edge:</b> click the inst
  sheet('Install the app','Open Ancient Talk in its own window, like an app, with saved books available offline.',L,'at-sheet-desk')}
 window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();deferred=e;sub='Free · works offline';lab='Install';setAvail(true);setTimeout(offer,1500)});
 window.addEventListener('appinstalled',function(){setAvail(false)});
-d.addEventListener('click',function(e){var t=e.target.closest&&e.target.closest('[data-install-hint]');if(t&&isSafari){e.preventDefault();sheet()}});
+d.addEventListener('click',function(e){var t=e.target.closest&&e.target.closest('[data-install]');if(t&&isSafari&&t.tagName!=='A'){e.preventDefault();sheet()}});
 if(isDesktop){setAvail(true);gets.forEach(function(x){var a=x.matches('li')?x.querySelector('a'):x;if(a!==heroBtn)a.innerHTML=I.pc+(x.matches('li')?'<span class="at-full">Get the app</span><span class="at-short">App</span>':'Get the app')})}
 if(isSafari){sub='Add to Home Screen';lab='Get the app';setAvail(true);setTimeout(offer,2000)}
 })();
