@@ -56,13 +56,15 @@ h1.part{font-size:clamp(2rem,4.5vw,3rem);margin:8px 0 24px}
 .toc li{margin:.25em 0;line-height:1.4}.toc li.t2{padding-left:1.4em;font-size:.95rem}.toc a{text-decoration:none}.toc a:hover{text-decoration:underline}
 .text{max-width:68ch;margin:0 auto;font-size:1.08rem;line-height:1.75}
 .text h2{font-size:1.65rem;margin:2.2em 0 .6em;scroll-margin-top:90px}.text h3{font-size:1.35rem;margin:1.8em 0 .5em;scroll-margin-top:90px}
-[data-xq]{scroll-margin-top:10.5rem}
-.xq-mark{background:color-mix(in srgb,#e4c36a 58%,transparent);border-radius:4px;transition:background-color 1.4s ease}
-.xq-mark.xq-off{background-color:transparent}
-@media (prefers-reduced-motion:reduce){.xq-mark{transition:none}}
-.rnav{display:flex;gap:14px 18px;align-items:center;flex-wrap:wrap}
-.xq-begin{position:fixed;z-index:6;top:6.9rem;left:50%;transform:translateX(-50%);font-weight:600;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:7px 14px;box-shadow:0 4px 16px rgba(0,0,0,.08);white-space:nowrap}
-@media (max-width:640px){.xq-begin{top:4.8rem;font-size:.9rem}}
+[data-xq],#xqStart{scroll-margin-top:11rem}
+.xq-start{margin:0 0 12px}
+.xq-begin{display:inline-block;font-weight:700;background:#7a1f2b;color:#fff;text-decoration:none;border-radius:6px;padding:8px 14px}
+.xq-begin:hover{background:#5e1420}
+.xq-mark{background:#f6e3a4;box-shadow:inset 4px 0 0 #7a1f2b;border-radius:4px}
+.xq-mark.xq-off{background:transparent;box-shadow:inset 4px 0 0 transparent;transition:background-color 1.4s ease,box-shadow 1.4s ease}
+[data-theme=dark] .xq-mark{background:#6a5420;box-shadow:inset 4px 0 0 #f0d48a;color:#f6eedd}
+[data-theme=dark] .xq-begin{background:#e4c36a;color:#2b2118}
+@media (prefers-reduced-motion:reduce){.xq-mark.xq-off{transition:none}}
 .text h4{font-family:var(--serif);font-size:1.2rem;margin:1.5em 0 .4em}
 .text p{margin:0 0 1.05em}.text blockquote{margin:1em 0 1em 1.5em;padding-left:1em;border-left:3px solid var(--line);color:#3d3530}
 .text table{border-collapse:collapse;margin:1em 0}.text td,.text th{padding:4px 8px;vertical-align:top}
