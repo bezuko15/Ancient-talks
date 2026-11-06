@@ -1,6 +1,6 @@
 /* Ancient Talk service worker. Generated from tools/sw_template.js by tools/upgrades2.py.
    Bump SW_VERSION in tools/upgrades2.py whenever core files change. */
-const VERSION = "v18-20261106";
+const VERSION = "v19-20261106";
 const CORE_CACHE = "at-core-" + VERSION;
 const PAGE_CACHE = "at-pages";      // pages/files visited (stale-while-revalidate)
 const BOOK_CACHE = "at-books";      // books saved with "Save this book for offline"
@@ -21,16 +21,23 @@ self.addEventListener("install", e => {
 });
 self.addEventListener("activate", e => {
   e.waitUntil((async () => {
-    for (const k of await caches.keys()) if (k.startsWith("at-core-") && k !== CORE_CACHE) await caches.delete(k);
+    for (const k of await caches.keys()) {
+      if (k.startsWith("at-core-") && k !== CORE_CACHE) await caches.delete(k);
+      if (k === PAGE_CACHE) await caches.delete(k); // drop stale HTML/JS left by v16–v18
+    }
     await self.clients.claim();
   })());
 });
+function store(req, cacheName, res) {
+  if (res && (res.ok || res.type === "opaque")) { const copy = res.clone(); caches.open(cacheName).then(c => c.put(req, copy)); }
+  return res;
+}
+function networkFirst(req, cacheName) {
+  return fetch(req).then(res => store(req, cacheName, res)).catch(() => caches.match(req).then(hit => hit || (req.mode === "navigate" ? caches.match(OFFLINE) : Response.error())));
+}
 function swr(req, cacheName, event) {
-  return caches.match(req, { ignoreSearch: req.mode === "navigate" }).then(hit => {
-    const net = fetch(req).then(res => {
-      if (res && (res.ok || res.type === "opaque")) { const copy = res.clone(); caches.open(cacheName).then(c => c.put(req, copy)); }
-      return res;
-    });
+  return caches.match(req).then(hit => {
+    const net = fetch(req).then(res => store(req, cacheName, res));
     if (hit) { event.waitUntil(net.catch(() => {})); return hit; }
     return net.catch(() => req.mode === "navigate" ? caches.match(OFFLINE) : Response.error());
   });
@@ -41,5 +48,7 @@ self.addEventListener("fetch", e => {
   const url = new URL(req.url);
   if (url.hostname === "fonts.googleapis.com" || url.hostname === "fonts.gstatic.com") { e.respondWith(swr(req, FONT_CACHE, e)); return; }
   if (url.origin !== self.location.origin) return;           // analytics, YouTube etc. go straight to network
-  e.respondWith(swr(req, url.pathname.indexOf("/books/") > -1 ? BOOK_CACHE : PAGE_CACHE, e));
+  const fresh = req.mode === "navigate" || /\.(js|css)$/.test(url.pathname);
+  const cacheName = url.pathname.indexOf("/books/") > -1 && !fresh ? BOOK_CACHE : PAGE_CACHE;
+  e.respondWith(fresh ? networkFirst(req, cacheName) : swr(req, cacheName, e));
 });
