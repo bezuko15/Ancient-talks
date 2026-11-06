@@ -93,7 +93,7 @@ function gloss(){var G=window.GLOSSARY;if(!G)return;var scope=document.querySele
   document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a.gl');if(!a){if(on&&!tip.contains(e.target))hide();return}if(on!==a){e.preventDefault();show(a)}});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')hide()});window.addEventListener('scroll',function(){if(on&&!on.matches(':hover'))hide()},{passive:true});
 }
-gloss();
+if(!window.AT_GPOP)gloss();
 
 /* ---------- 4. Support & contact ---------- */
 var SU=cfg('SUPPORT_URL')||'',CE=cfg('CONTACT_EMAIL')||'';
