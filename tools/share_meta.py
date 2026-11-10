@@ -6,7 +6,7 @@ Run from the repository root after adding a page:
     python3 tools/share_meta.py
 
 Book pages use the book title plus the author. The Icons page uses
-img/og-icons.png. Every other page uses img/og-image.png. Both images
+img/og-icons.jpg. Every other page uses img/og-image.jpg. Both images
 are 1200 by 630. URLs are absolute https://ancienttalks.com addresses.
 """
 import html
@@ -15,8 +15,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = "https://ancienttalks.com"
-DEFAULT_IMAGE = SITE + "/img/og-image.png"
-ICONS_IMAGE = SITE + "/img/og-icons.png"
+DEFAULT_IMAGE = SITE + "/img/og-image.jpg"
+ICONS_IMAGE = SITE + "/img/og-icons.jpg"
 DEFAULT_ALT = "Ancient Talk: The Church Fathers, read aloud"
 ICONS_ALT = "Icons of the saints on Ancient Talk"
 

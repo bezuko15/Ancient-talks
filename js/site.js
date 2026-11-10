@@ -33,7 +33,7 @@ if(mb&&nav){
  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('open')){close();mb.focus()}});
  document.addEventListener('click',function(e){if(!nav.classList.contains('open'))return;if(nav.contains(e.target)||mb.contains(e.target))return;close()});
  document.addEventListener('focusin',function(e){if(!nav.classList.contains('open'))return;if(nav.contains(e.target)||e.target===mb)return;close()});
- window.addEventListener('resize',function(){if(nav.classList.contains('open'))place()});
+ window.addEventListener('resize',function(){if(nav.classList.contains('open'))place()},{passive:true});
 }
 // ---- reader: text size + progress
 var art=document.querySelector('article.text');

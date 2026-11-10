@@ -1,11 +1,11 @@
 /* Ancient Talk service worker. Generated from tools/sw_template.js by tools/upgrades2.py.
    Bump SW_VERSION in tools/upgrades2.py whenever core files change. */
-const VERSION = "v29-20261110";
+const VERSION = "v30-20261110";
 const CORE_CACHE = "at-core-" + VERSION;
 const PAGE_CACHE = "at-pages";      // pages/files visited (stale-while-revalidate)
 const BOOK_CACHE = "at-books";      // books saved with "Save this book for offline"
 const FONT_CACHE = "at-fonts";
-const CORE = ["./", "index.html", "library.html", "authors.html", "about.html", "start.html", "daily.html", "shorts.html", "timeline.html", "topics.html", "glossary.html", "support.html", "watch.html", "guides.html", "offline.html", "404.html", "manifest.webmanifest", "css/style.css", "js/books.js", "js/config.js", "js/daily-data.js", "js/daily.js", "js/extras.js", "js/feasts.js", "js/glossary-data.js", "js/main.js", "js/plans-data.js", "js/prayers.js", "js/reader.js", "js/shorts.js", "js/site.js", "js/whats-new-data.js", "js/whats-new.js", "js/upgrades.js", "js/upgrades3.js", "img/emblem.png", "img/favicon.png", "img/apple-touch-icon.png", "img/icon-192.png", "img/icon-512.png", "my-library.html", "plans.html", "search.html", "css/upgrades3.css", "search/docs.json", "fonts/atkinson-Regular.woff2", "fonts/atkinson-Bold.woff2", "prayers.html", "css/upgrades4.css", "css/pwa.css", "js/pwa.js", "img/icon-maskable-512.png", "css/date.css", "js/date.js", "films.html", "icons.html", "ask.html", "map.html", "css/features.css", "js/icons-data.js", "js/icons.js", "js/map.js", "img/icons/christ-pantocrator.jpg", "img/icons/athanasius.jpg", "img/icons/anthony.jpg", "img/icons/chrysostom.jpg", "css/tour.css", "js/tour.js", "css/glossary-pop.css", "js/glossary-pop.js"];
+const CORE = ["./", "index.html", "library.html", "about.html", "start.html", "support.html", "offline.html", "404.html", "manifest.webmanifest", "css/style.css", "css/upgrades3.css", "css/upgrades4.css", "css/pwa.css", "css/date.css", "css/features.css", "css/tour.css", "js/config.js", "js/main.js", "js/site.js", "js/extras.js", "js/feasts.js", "js/books.js", "js/whats-new-data.js", "js/whats-new.js", "js/upgrades.js", "js/upgrades3.js", "js/pwa.js", "js/tour.js", "js/date.js", "js/reader.js", "fonts/atkinson-Regular.woff2", "fonts/atkinson-Bold.woff2", "img/emblem.png", "img/favicon.png"];
 const FONT_CSS = ["https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@400;600&display=swap",
   "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=EB+Garamond:ital@0;1&family=Source+Sans+3:wght@400;600&display=swap"];
 const OFFLINE = new URL("offline.html", self.registration.scope).href;
