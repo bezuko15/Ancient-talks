@@ -1,6 +1,16 @@
 /* Ancient Talk site-wide script: nav, night mode, reading progress, widgets. No tracking. */
 (function(){
 var ROOT=(document.documentElement.getAttribute('data-root')||'');
+// One reload when a newer service worker takes over an already open window.
+// The first install does not reload. Saved books and notes are left untouched.
+if('serviceWorker' in navigator){
+  var hadController=!!navigator.serviceWorker.controller;
+  navigator.serviceWorker.addEventListener('controllerchange',function(){
+    if(!hadController){hadController=true;return}
+    try{if(sessionStorage.getItem('at-sw-reload')==='1')return;sessionStorage.setItem('at-sw-reload','1')}catch(e){return}
+    location.reload();
+  });
+}
 function ls(k,v){try{if(v===undefined){var x=localStorage.getItem(k);return x?JSON.parse(x):null}localStorage.setItem(k,JSON.stringify(v))}catch(e){return null}}
 // ---- night mode
 var tb=document.getElementById('themeToggle');
