@@ -5,7 +5,9 @@
 .prayer .pwho{color:var(--muted);margin:.1em 0 .6em;font-style:italic}
 .prayer .prayer-text{margin:0 0 .8em;padding:0 0 0 14px;border-left:3px solid var(--accent);font-family:var(--serif);font-size:1.18rem;line-height:1.5}
 .prayer .prayer-text p{margin:0 0 .6em}
-.prayer .psrc{font-size:.86rem;color:var(--muted);margin:auto 0 .7em}
+.sfilter.pfilter{display:flex;flex-wrap:wrap;max-width:100%}
+.prayer .psrc{font-size:.86rem;color:var(--muted);margin:auto 0 .7em;overflow-wrap:anywhere}
+.prayer .psrc a{overflow-wrap:anywhere}
 .prayer .pact{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .prayer .plinks{display:flex;flex-wrap:wrap;gap:4px 14px;width:100%;font-size:.92rem;margin-top:4px}
 .ptags{display:flex;gap:6px;flex-wrap:wrap}
