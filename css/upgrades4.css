@@ -23,6 +23,13 @@ footer .fnote a{font-weight:600}
 .card.author .alinks{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:.92rem;margin-top:.4em}
 @media (max-width:560px){.prayers{grid-template-columns:1fr}.prayer .prayer-text{font-size:1.08rem}}
 
+.whats-new{padding-top:12px}
+.whats-new h3{font-size:1.25rem;margin:1.1em 0 .3em}
+.whats-new-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px 28px}
+.whats-new-list a{font-weight:600}
+.wn-note{color:var(--muted);font-size:.92rem}
+.email-soon{margin:1.2em 0 0;padding:12px 14px;border:1px dashed var(--line);border-radius:8px;color:var(--muted)}
+@media(max-width:640px){.whats-new-list{grid-template-columns:1fr}}
 .home-picks{padding-top:8px;padding-bottom:28px}
 .home-picks-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
 .home-pick{display:grid;grid-template-columns:minmax(128px,38%) 1fr;min-height:240px;background:var(--paper);border:1px solid var(--line);border-radius:10px;overflow:hidden;text-decoration:none;color:inherit}
