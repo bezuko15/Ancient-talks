@@ -11,6 +11,7 @@ function toast(m){var t=el('div','at-toast');t.setAttribute('role','status');t.t
 function dkey(d){d=d||new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
 function dnum(k){var p=k.split('-');return Math.round(Date.UTC(+p[0],p[1]-1,+p[2])/864e5)}
 var art=$('article.text'),BOOK=H.getAttribute('data-book'),PAGE=location.pathname.split('/').pop()||'index.html';
+if(art){$$('p',art).forEach(function(p,i){var id='p'+i;if(document.getElementById(id))return;if(!p.id){p.id=id;return}var mark=document.createElement('span');mark.id=id;mark.className='p-anchor';p.parentNode.insertBefore(mark,p)})}
 var BOOKTITLE=H.getAttribute('data-book-title')||'';
 function paras(){return art?$$('p',art):[]}
 

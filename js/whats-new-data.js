@@ -33,6 +33,28 @@ window.AT_WHATS_NEW=[
   {href:"prayers.html#rejoice-o-virgin", title:"Rejoice, O Virgin", note:"Hapgood, 1906"},
   {href:"prayers.html#vespers-enlighten", title:"O Lord, rebuke us not", note:"Hapgood, 1906"}
  ]},
+ {group:"Icons", items:[
+  {href:"icons.html#cyprian", title:"St Cyprian of Carthage", note:"Icon"},
+  {href:"icons.html#cassian", title:"St John Cassian", note:"Icon"},
+  {href:"icons.html#theophilus", title:"St Theophilus of Antioch", note:"Icon"},
+  {href:"icons.html#macrina", title:"St Macrina the Younger", note:"Icon"},
+  {href:"icons.html#john-baptist", title:"St John the Baptist", note:"Icon"},
+  {href:"icons.html#peter", title:"St Peter the Apostle", note:"Icon"},
+  {href:"icons.html#paul", title:"St Paul the Apostle", note:"Icon"},
+  {href:"icons.html#john-theologian", title:"St John the Theologian", note:"Icon"},
+  {href:"icons.html#stephen", title:"St Stephen the First Martyr", note:"Icon"},
+  {href:"icons.html#mary-magdalene", title:"St Mary Magdalene", note:"Icon"},
+  {href:"icons.html#luke", title:"St Luke the Evangelist", note:"Icon"},
+  {href:"icons.html#andrew", title:"St Andrew the First-Called", note:"Icon"},
+  {href:"icons.html#thomas", title:"St Thomas the Apostle", note:"Icon"},
+  {href:"icons.html#elijah", title:"The Prophet Elijah", note:"Icon"},
+  {href:"icons.html#moses", title:"The Prophet Moses", note:"Icon"},
+  {href:"icons.html#isaiah", title:"The Prophet Isaiah", note:"Icon"},
+  {href:"icons.html#daniel", title:"The Prophet Daniel", note:"Icon"},
+  {href:"icons.html#simeon", title:"St Simeon the God-receiver", note:"Icon"},
+  {href:"icons.html#david", title:"The Prophet and King David", note:"Icon"},
+  {href:"icons.html#gabriel", title:"The Archangel Gabriel", note:"Icon"}
+ ]},
  {group:"Reading plans", items:[
   {href:"plans.html", title:"Thirty-two reading plans", note:"From three days to a year"}
  ]}

@@ -29,10 +29,14 @@ section.alt .card{background:var(--bg)}
 .card p{margin:.4em 0;color:var(--muted)}
 .video{aspect-ratio:16/9;border-radius:6px;overflow:hidden;background:linear-gradient(135deg,#3a2c26,#7a1f2b);display:flex;align-items:center;justify-content:center;color:#f7f1e3;font-family:var(--serif);font-size:1.5rem;text-align:center;padding:12px}
 .video iframe{width:100%;height:100%;border:0}
+.video-playlist{max-width:960px;margin:8px auto 0}
 .vcap{margin:.6em 0 0;font-weight:600}
 .filters{display:flex;gap:12px;flex-wrap:wrap;margin:0 0 28px}
-.filters input,.filters select{font:inherit;padding:10px 12px;border:1px solid #c9b994;border-radius:4px;background:#fff;color:var(--ink)}
-.filters input{flex:1;min-width:220px}
+.filters input,.filters select{font:inherit;padding:10px 12px;border:1px solid #c9b994;border-radius:4px;background:#fff;color:var(--ink);max-width:100%;min-width:0}
+.filters input{flex:1;min-width:0}
+.filters{max-width:100%}
+#fa{max-width:100%}
+@media(max-width:400px){.filters{flex-direction:column;align-items:stretch}#fa,.filters select{width:100%}}
 .book h3{margin-bottom:.2em}.book .by{font-weight:600;color:var(--ink)}
 .book a.read{display:inline-block;margin-top:8px;font-weight:600}
 .count{color:var(--muted);margin-bottom:16px}
@@ -71,6 +75,7 @@ h1.part{font-size:clamp(2rem,4.5vw,3rem);margin:8px 0 24px}
 .text .sc{font-variant:small-caps}.text .arg{color:var(--muted)}
 body.serif .text{font-family:'EB Garamond',Georgia,serif;font-size:1.22rem}
 .source{margin:48px auto 0;max-width:68ch;border-top:1px solid var(--line);padding-top:24px;font-size:.95rem;color:var(--muted)}
+.source a,.book .orig a{overflow-wrap:anywhere}
 .source h2{font-size:1.4rem;color:var(--ink)}
 .btn.small{padding:8px 16px;font-size:.95rem;margin:4px 6px 4px 0}
 .pn{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:40px;padding-top:20px;font-weight:600}
@@ -105,7 +110,7 @@ body.serif .text{font-family:'EB Garamond',Georgia,serif;font-size:1.22rem}
 /* ===== v4: header controls, mobile menu, night mode, widgets ===== */
 header.site .wrap{flex-wrap:nowrap}
 .hctl{display:flex;align-items:center;gap:6px}
-.iconbtn{font:inherit;font-size:1.05rem;line-height:1;background:transparent;border:1px solid var(--line);color:var(--ink);border-radius:6px;padding:7px 10px;cursor:pointer;min-width:38px;min-height:38px}
+.iconbtn{font:inherit;font-size:1.05rem;line-height:1;background:transparent;border:1px solid var(--line);color:var(--ink);border-radius:6px;padding:7px 10px;cursor:pointer;min-width:44px;min-height:44px}
 .iconbtn:hover{border-color:var(--accent);color:var(--accent)}
 #menuToggle{display:none}
 nav ul{gap:18px}
