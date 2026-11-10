@@ -1,6 +1,6 @@
 /* Ancient Talk service worker. Generated from tools/sw_template.js by tools/upgrades2.py.
    Bump SW_VERSION in tools/upgrades2.py whenever core files change. */
-const VERSION = "v23-20261110";
+const VERSION = "v24-20261110";
 const CORE_CACHE = "at-core-" + VERSION;
 const PAGE_CACHE = "at-pages";      // pages/files visited (stale-while-revalidate)
 const BOOK_CACHE = "at-books";      // books saved with "Save this book for offline"
